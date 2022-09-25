@@ -44,7 +44,7 @@ export function MyMap() {
 							parseInt(brew?.longitude || 4.6997),
 						]}
 						onMouseOver={(e) => showInfo(brew, e)}
-						onMouseOut={hideInfo}
+						// onMouseOut={hideInfo}
 					/>
 				))}
 			</Map>
