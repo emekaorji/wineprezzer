@@ -12,7 +12,7 @@
   pointer-events: none;
 }
 .locationInfo h2 {
-  color: #0414A7;
+  color: #FC7C6C;
   pointer-events: none;
 }
 .location {
@@ -28,10 +28,10 @@
   pointer-events: all;
 }
 .phone:hover {
-  color: #0414A7;
+  color: #FC7C6C;
 }
 .websiteLink {
-  color: #0414A7;
+  color: #FC7C6C;
   margin-top: auto;
   pointer-events: all;
 }
