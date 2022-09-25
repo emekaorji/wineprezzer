@@ -1,6 +1,21 @@
 import React from 'react';
 
-const LocationIcon = ({ props }) => (
+const Location = ({ props }) => (
+	<svg
+		{...props}
+		width='16'
+		height='22'
+		viewBox='0 0 16 22'
+		fill='none'
+		xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M8 0C3.58286 0 0 3.4485 0 7.7C0 13.475 8 22 8 22C8 22 16 13.475 16 7.7C16 3.4485 12.4171 0 8 0ZM8 10.45C6.42286 10.45 5.14286 9.218 5.14286 7.7C5.14286 6.182 6.42286 4.95 8 4.95C9.57714 4.95 10.8571 6.182 10.8571 7.7C10.8571 9.218 9.57714 10.45 8 10.45Z'
+			fill='#0414A7'
+		/>
+	</svg>
+);
+
+const Phone = ({ props }) => (
 	<svg
 		{...props}
 		width='20'
@@ -18,4 +33,5 @@ const LocationIcon = ({ props }) => (
 		/>
 	</svg>
 );
-export { LocationIcon };
+
+export { Location, Phone };

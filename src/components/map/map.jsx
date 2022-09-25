@@ -4,6 +4,9 @@ import LocationInfo from '../locationInfo/locationInfo';
 
 export function MyMap() {
 	const [brewery, setBrewery] = useState([]);
+	const [hoveredData, setHoveredData] = useState(null);
+	const [activeData, setActiveData] = useState([]);
+	const [position, setPosition] = useState({ x: 0, y: 0 });
 
 	const fetchData = async () => {
 		const response = await fetch(
@@ -19,22 +22,35 @@ export function MyMap() {
 		fetchData();
 	}, []);
 
-	const showInfo = () => {};
+	const showInfo = (brew, e) => {
+		setTimeout(() => setHoveredData(brew), 1000);
+		const {
+			event: { pageX, pageY },
+		} = e;
+		setPosition({ x: pageX, y: pageY });
+	};
+
+	const hideInfo = () => setTimeout(() => setHoveredData(null), 2000);
 
 	return (
 		<>
 			<Map height={600} defaultCenter={[50.879, 4.6997]} defaultZoom={3}>
-				{/* <Marker width={50} anchor={[50.879, 4.6997]} /> */}
 				{brewery.map((brew, index) => (
 					<Marker
 						key={index}
 						width={50}
-						anchor={[parseInt(brew?.latitude), parseInt(brew?.longitude)]}
-						onMouseOver={showInfo}
+						anchor={[
+							parseInt(brew?.latitude) || 50.879,
+							parseInt(brew?.longitude || 4.6997),
+						]}
+						onMouseOver={(e) => showInfo(brew, e)}
+						onMouseOut={hideInfo}
 					/>
 				))}
 			</Map>
-			<LocationInfo />
+			{hoveredData && (
+				<LocationInfo {...{ hoveredData, activeData, position }} />
+			)}
 		</>
 	);
 }
