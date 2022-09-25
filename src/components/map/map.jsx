@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Map, Marker } from 'pigeon-maps';
-import { stamenTerrain } from 'pigeon-maps/providers';
+import LocationInfo from '../locationInfo/locationInfo';
 
 export function MyMap() {
 	const [brewery, setBrewery] = useState([]);
@@ -22,20 +22,19 @@ export function MyMap() {
 	const showInfo = () => {};
 
 	return (
-		<Map
-			provider={stamenTerrain}
-			height={600}
-			defaultCenter={[50.879, 4.6997]}
-			defaultZoom={1}>
-			{/* <Marker width={50} anchor={[50.879, 4.6997]} /> */}
-			{brewery.map((brew, index) => (
-				<Marker
-					key={index}
-					width={50}
-					anchor={[parseInt(brew?.latitude), parseInt(brew?.longitude)]}
-					onMouseOver={showInfo}
-				/>
-			))}
-		</Map>
+		<>
+			<Map height={600} defaultCenter={[50.879, 4.6997]} defaultZoom={3}>
+				{/* <Marker width={50} anchor={[50.879, 4.6997]} /> */}
+				{brewery.map((brew, index) => (
+					<Marker
+						key={index}
+						width={50}
+						anchor={[parseInt(brew?.latitude), parseInt(brew?.longitude)]}
+						onMouseOver={showInfo}
+					/>
+				))}
+			</Map>
+			<LocationInfo />
+		</>
 	);
 }
