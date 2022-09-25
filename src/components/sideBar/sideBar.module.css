@@ -1,0 +1,9 @@
+.nav {
+  width: max(30%, 10em);
+  background-color: #FC7C6C;
+  background-color: #6e362f;
+}
+.logo {
+  display: flex;
+  color: #fff;
+}

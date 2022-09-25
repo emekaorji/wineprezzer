@@ -5,6 +5,7 @@ import LocationInfo from '../locationInfo/locationInfo';
 export function MyMap() {
 	const [brewery, setBrewery] = useState([]);
 	const [hoveredData, setHoveredData] = useState(null);
+
 	// eslint-disable-next-line
 	const [activeData, setActiveData] = useState([]);
 	const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -20,22 +21,58 @@ export function MyMap() {
 	};
 
 	useEffect(() => {
-		fetchData();
+		const handleLoad = async () => {
+			await fetchData();
+
+			const allPointsDiv = Array.from(
+				document.querySelectorAll('.pigeon-click-block')
+			);
+			const allPointsSVGs = Array.from(
+				document.querySelectorAll('.pigeon-click-block svg')
+			);
+			const allPointsG = Array.from(
+				document.querySelectorAll('.pigeon-click-block g')
+			);
+			const allPointsPath = Array.from(
+				document.querySelectorAll('.pigeon-click-block path')
+			);
+			const allPointsCircle = Array.from(
+				document.querySelectorAll('.pigeon-click-block circle')
+			);
+			const allPoints = [
+				...allPointsDiv,
+				...allPointsSVGs,
+				...allPointsG,
+				...allPointsPath,
+				...allPointsCircle,
+			];
+
+			window.addEventListener('click', (event) => {
+				if (allPoints.includes(event.target) === false) {
+					setHoveredData(null);
+				}
+			});
+		};
+
+		handleLoad();
 	}, []);
 
 	const showInfo = (brew, e) => {
-		setTimeout(() => setHoveredData(brew), 1000);
+		if (hoveredData) {
+			setHoveredData(brew);
+		} else {
+			setTimeout(() => setHoveredData(brew), 1000);
+		}
 		const {
 			event: { pageX, pageY },
 		} = e;
+		console.log(e.event);
 		setPosition({ x: pageX, y: pageY });
 	};
 
-	// const hideInfo = () => setTimeout(() => setHoveredData(null), 2000);
-
 	return (
 		<>
-			<Map height={600} defaultCenter={[50.879, 4.6997]} defaultZoom={3}>
+			<Map defaultCenter={[50.879, 4.6997]} defaultZoom={3}>
 				{brewery.map((brew, index) => (
 					<Marker
 						key={index}
