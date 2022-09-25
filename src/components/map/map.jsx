@@ -5,6 +5,7 @@ import LocationInfo from '../locationInfo/locationInfo';
 export function MyMap() {
 	const [brewery, setBrewery] = useState([]);
 	const [hoveredData, setHoveredData] = useState(null);
+	// eslint-disable-next-line
 	const [activeData, setActiveData] = useState([]);
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -30,7 +31,7 @@ export function MyMap() {
 		setPosition({ x: pageX, y: pageY });
 	};
 
-	const hideInfo = () => setTimeout(() => setHoveredData(null), 2000);
+	// const hideInfo = () => setTimeout(() => setHoveredData(null), 2000);
 
 	return (
 		<>
@@ -45,6 +46,7 @@ export function MyMap() {
 						]}
 						onMouseOver={(e) => showInfo(brew, e)}
 						// onMouseOut={hideInfo}
+						onClick={(e) => showInfo(brew, e)}
 					/>
 				))}
 			</Map>
