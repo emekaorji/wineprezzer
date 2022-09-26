@@ -1,0 +1,17 @@
+.list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  margin-block-start: 1em;
+}
+.list button {
+  text-align: left;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  padding: .3em .5em;
+}
+.list button:hover {
+  background-color: #00000033;
+}
