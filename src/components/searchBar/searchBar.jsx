@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Search } from "../ui/icons";
 import styles from "./searchBar.module.css";
 
-function SearchBar({ setSearchQuery }) {
+function SearchBar({ setSearchQuery, setActiveNav }) {
   const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchQuery(input);
+    setActiveNav("breweries");
   };
 
   return (
@@ -20,7 +21,7 @@ function SearchBar({ setSearchQuery }) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           type="text"
-          placeholder="Search for breweries"
+          placeholder="Search by name, state, country, "
         />
       </form>
     </>

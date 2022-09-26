@@ -6,9 +6,14 @@ import BreweryList from "../breweryList/breweryList";
 import BreweryInfo from "../breweryInfo/breweryInfo";
 import useDidMountEffect from "../../hooks/useDidMountEffect";
 
-function SideBar({ breweries, activeData, setActiveData, setMapCenter }) {
+function SideBar({
+  breweries,
+  activeData,
+  setActiveData,
+  activeNav,
+  setActiveNav,
+}) {
   const [expanded, setExpanded] = useState(false);
-  const [activeNav, setActiveNav] = useState("breweries");
 
   useDidMountEffect(() => {
     setActiveNav("info");

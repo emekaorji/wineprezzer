@@ -2,7 +2,7 @@
   width: max(40%, 13em);
   background-color: #ffffff;
   box-shadow: 3px 3px 12px #00000022;
-  font-size: 1.9em;
+  font-size: 1.6em;
   display: flex;
   gap: .3em;
   position: fixed;
@@ -26,6 +26,7 @@
 }
 
 .searchBar input {
+  width: 100%;
   background-color: transparent;
   color: #000000;
   font-size: inherit;

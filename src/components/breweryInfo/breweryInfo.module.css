@@ -16,13 +16,13 @@
 
 .info::-webkit-scrollbar {
   width: .5em;
-  background-color: #fc7c6c;
+  background-color: #ffe8e4;
   border-radius: 2em;
 }
 
 .info::-webkit-scrollbar-thumb {
-  background-color: #ffffff;
-  border: .15em solid #fc7c6c;
+  background-color: #fc7c6c;
+  border: .15em solid #ffe8e4;
   border-radius: 2em;
 }
 
@@ -48,6 +48,7 @@
 .infoContainer a {
   outline: none;
   color: rgb(90, 90, 90);
+  word-break: break-word;
 }
 
 .infoContainer span {

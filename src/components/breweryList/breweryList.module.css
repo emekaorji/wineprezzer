@@ -4,17 +4,18 @@
   flex-direction: column;
   overflow-y: auto;
   margin-block-start: 1em;
+  padding-inline-end: .5em;
 }
 
 .list::-webkit-scrollbar {
   width: .5em;
-  background-color: #fc7c6c;
+  background-color: #ffe8e4;
   border-radius: 2em;
 }
 
 .list::-webkit-scrollbar-thumb {
-  background-color: #ffffff;
-  border: .15em solid #fc7c6c;
+  background-color: #fc7c6c;
+  border: .15em solid #ffe8e4;
   border-radius: 2em;
 }
 
@@ -24,8 +25,12 @@
   font-family: inherit;
   font-weight: inherit;
   padding: .3em .5em;
+  border-radius: .4em;
 }
 
 .list button:hover {
+  font-weight: 500;
   background-color: #00000033;
+  box-shadow: 2px 2px 8px #00000033;
+  padding-inline-start: .8em;
 }

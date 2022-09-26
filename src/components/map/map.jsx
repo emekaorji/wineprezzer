@@ -14,7 +14,7 @@ export function MyMap({
   return (
     <>
       <Map defaultCenter={[40.879, 4.6997]} defaultZoom={3} minZoom={2}>
-        {breweries.map((brewery, index) => (
+        {breweries?.map((brewery, index) => (
           <Marker
             key={index}
             width={50}
