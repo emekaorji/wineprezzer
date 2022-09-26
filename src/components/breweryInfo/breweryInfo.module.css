@@ -1,4 +1,50 @@
+.none {
+  margin-block-start: 1.5em;
+}
+
 .info {
+  height: 100%;
+  overflow-y: auto;
   margin-block-start: 1em;
-  border: 1px solid red;
+}
+
+.info::-webkit-scrollbar {
+  width: .5em;
+  background-color: #fc7c6c;
+  border-radius: 2em;
+}
+
+.info::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border: .15em solid #fc7c6c;
+  border-radius: 2em;
+}
+
+.infoContainer {
+  margin-block: 30px;
+}
+
+.icon {
+  width: 1.2em;
+  min-width: 1.2em;
+  height: 1.2em;
+  min-height: 1.2em;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  padding: .2em;
+}
+
+.infoContainer h3 {
+  color: #fc7c6c;
+}
+
+.infoContainer a {
+  outline: none;
+  color: rgb(90, 90, 90);
+}
+
+.infoContainer span {
+  color: rgb(125, 125, 125);
+  font-weight: 500;
 }

@@ -1,53 +1,62 @@
-import React, { useState } from 'react';
-import { Arrow } from '../ui/icons';
-import styles from './sideBar.module.css';
-import Logo from '../../media/logos/wineprezzer-logo.png';
-import BreweryList from '../breweryList/breweryList';
-import BreweryInfo from '../breweryInfo/breweryInfo';
+import React, { useState } from "react";
+import { Arrow } from "../ui/icons";
+import styles from "./sideBar.module.css";
+import Logo from "../../media/logos/wineprezzer-logo.png";
+import BreweryList from "../breweryList/breweryList";
+import BreweryInfo from "../breweryInfo/breweryInfo";
+import useDidMountEffect from "../../hooks/useDidMountEffect";
 
 function SideBar({ breweries, activeData, setActiveData }) {
-	const [expanded, setExpanded] = useState(false);
-	const [activeNav, setActiveNav] = useState('location');
+  const [expanded, setExpanded] = useState(false);
+  const [activeNav, setActiveNav] = useState("breweries");
 
-	const toggleNav = () => setExpanded(!expanded);
+  useDidMountEffect(() => {
+    setActiveNav("info");
+  }, [activeData]);
 
-	const toggleActiveNav = (navState) => setActiveNav(navState);
+  const toggleNav = () => setExpanded(!expanded);
 
-	return (
-		<>
-			<div className={styles.sideBarBehind}></div>
-			<nav
-				id='sideNav'
-				className={styles.nav + (expanded ? ' ' + styles.expanded : '')}>
-				<button className={styles.hamburger} onClick={toggleNav}>
-					<Arrow />
-				</button>
-				<div className={styles.navContent}>
-					<a href='/' className={styles.logo}>
-						<img src={Logo} alt='WinePrezzer' />
-					</a>
-					<div className={styles.navigation}>
-						<button
-							className={activeNav === 'info' ? styles.activeNav : ''}
-							onClick={() => toggleActiveNav('info')}>
-							Info
-						</button>
-						<button
-							className={activeNav === 'location' ? styles.activeNav : ''}
-							onClick={() => toggleActiveNav('location')}>
-							Location
-						</button>
-					</div>
+  const toggleActiveNav = (navState) => setActiveNav(navState);
 
-					{activeNav === 'info' ? (
-						<BreweryInfo {...{ activeData }} />
-					) : (
-						<BreweryList {...{ breweries, activeData, setActiveData }} />
-					)}
-				</div>
-			</nav>
-		</>
-	);
+  return (
+    <>
+      <div className={styles.sideBarBehind}></div>
+      <nav
+        id="sideNav"
+        className={styles.nav + (expanded ? " " + styles.expanded : "")}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className={styles.hamburger} onClick={toggleNav}>
+          <Arrow />
+        </button>
+        <div className={styles.navContent}>
+          <a href="/" className={styles.logo}>
+            <img src={Logo} alt="WinePrezzer" />
+          </a>
+          <div className={styles.navigation}>
+            <button
+              className={activeNav === "info" ? styles.activeNav : ""}
+              onClick={() => toggleActiveNav("info")}
+            >
+              Info
+            </button>
+            <button
+              className={activeNav === "breweries" ? styles.activeNav : ""}
+              onClick={() => toggleActiveNav("breweries")}
+            >
+              Breweries
+            </button>
+          </div>
+
+          {activeNav === "info" ? (
+            <BreweryInfo {...{ activeData }} />
+          ) : (
+            <BreweryList {...{ breweries, activeData, setActiveData }} />
+          )}
+        </div>
+      </nav>
+    </>
+  );
 }
 
 export default SideBar;

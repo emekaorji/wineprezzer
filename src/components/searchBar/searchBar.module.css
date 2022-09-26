@@ -13,6 +13,7 @@
   border-radius: .6em;
   padding: .3em;
 }
+
 .icon {
   width: 1.5em;
   min-width: 1.5em;
@@ -23,6 +24,7 @@
   align-items: center;
   padding: .2em;
 }
+
 .searchBar input {
   background-color: transparent;
   color: #000000;
@@ -32,9 +34,11 @@
   border: none;
   outline: none;
 }
+
 .searchBar input::placeholder {
   color: #00000055;
 }
+
 @media screen and (min-width: 768px) {
   .searchBar {
     transform: translateX(-7%);
