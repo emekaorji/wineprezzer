@@ -13,7 +13,7 @@ export function MyMap({
 }) {
   return (
     <>
-      <Map defaultCenter={[50.879, 4.6997]} defaultZoom={3}>
+      <Map defaultCenter={[40.879, 4.6997]} defaultZoom={3} minZoom={2}>
         {breweries.map((brewery, index) => (
           <Marker
             key={index}
@@ -21,7 +21,7 @@ export function MyMap({
             color="#FC7C6C"
             anchor={[
               parseInt(brewery?.latitude) || 50.879,
-              parseInt(brewery?.longitude || 4.6997),
+              parseInt(brewery?.longitude) || 4.6997,
             ]}
             onMouseOver={(e) => showHoverInfo(brewery, e)}
             onClick={(e) => {

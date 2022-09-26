@@ -6,8 +6,8 @@ function BreweryInfo({ activeData }) {
   if (!activeData) {
     return (
       <div className={styles.none}>
-        No brewery is selected, click on a point on the map or in the locations
-        panel
+        No brewery is selected, click on a point on the map or in the
+        'Breweries' panel
       </div>
     );
   }

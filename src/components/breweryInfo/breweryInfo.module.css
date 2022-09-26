@@ -1,5 +1,11 @@
 .none {
-  margin-block-start: 1.5em;
+  width: 80%;
+  color: #00000033;
+  font-size: 1.6em;
+  font-weight: 700;
+  text-align: center;
+  margin-block-start: 3.5em;
+  margin-inline: auto;
 }
 
 .info {

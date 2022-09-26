@@ -5,7 +5,6 @@ import SearchBar from "./components/searchBar/searchBar";
 
 function App() {
   const [hoveredData, setHoveredData] = useState(null);
-  // eslint-disable-next-line
   const [activeData, setActiveData] = useState(null);
 
   const [breweries, setBreweries] = useState([]);
