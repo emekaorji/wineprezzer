@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { Search } from '../ui/icons';
 import styles from './searchBar.module.css';
 
-function SearchBar() {
+function SearchBar({ setSearchQuery }) {
 	const [input, setInput] = useState('');
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setSearchQuery(input);
+	};
 
 	return (
 		<>
-			<div className={styles.searchBar}>
+			<form onSubmit={handleSubmit} className={styles.searchBar}>
 				<span className={styles.icon}>
 					<Search />
 				</span>
@@ -17,7 +22,7 @@ function SearchBar() {
 					type='text'
 					placeholder='Dummy placeholder'
 				/>
-			</div>
+			</form>
 		</>
 	);
 }

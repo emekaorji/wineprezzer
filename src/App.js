@@ -11,7 +11,7 @@ function App() {
 	const [breweries, setBreweries] = useState([]);
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 
-	// const [searchQuery, setSearchQuery] = useState('');
+	const [searchQuery, setSearchQuery] = useState('');
 
 	const fetchData = async () => {
 		const response = await fetch(
@@ -23,15 +23,16 @@ function App() {
 		setBreweries(data);
 	};
 
-	// const fetchData = async () => {
-	// 	const response = await fetch(
-	// 		`https://api.openbrewerydb.org/breweries/search?query=${search}`
-	// 	);
-	// 	const data = await response.json();
+	const fetchSearchedData = async () => {
+		if (!searchQuery) return;
+		const response = await fetch(
+			`https://api.openbrewerydb.org/breweries/search?query=${searchQuery}`
+		);
+		const data = await response.json();
 
-	// 	console.log(data);
-	// 	setBreweries(data);
-	// };
+		console.log(data);
+		setBreweries(data);
+	};
 
 	const handleClickListener = useCallback(() => {
 		const allPointsDiv = Array.from(
@@ -51,7 +52,6 @@ function App() {
 			...allPointsSideBar,
 			...allPointsSideBarChildren,
 		];
-		console.log(allPoints);
 
 		const clickListener = (event) => {
 			if (allPoints.includes(event.target) === false) {
@@ -78,6 +78,10 @@ function App() {
 		initializeApp();
 	}, [initializeApp]);
 
+	useEffect(() => {
+		fetchSearchedData();
+	}, [searchQuery]);
+
 	const showHoverInfo = (brew, e) => {
 		if (activeData) return;
 		if (hoveredData) {
@@ -101,7 +105,7 @@ function App() {
 
 	return (
 		<>
-			<SearchBar />
+			<SearchBar {...{ setSearchQuery }} />
 			<SideBar {...{ breweries, activeData, setActiveData }} />
 			<MyMap
 				{...{
