@@ -23,7 +23,7 @@ function App() {
 		setBreweries(data);
 	};
 
-	const fetchSearchedData = async () => {
+	const fetchSearchedData = useCallback(async () => {
 		if (!searchQuery) return;
 		const response = await fetch(
 			`https://api.openbrewerydb.org/breweries/search?query=${searchQuery}`
@@ -32,7 +32,7 @@ function App() {
 
 		console.log(data);
 		setBreweries(data);
-	};
+	}, [searchQuery]);
 
 	const handleClickListener = useCallback(() => {
 		const allPointsDiv = Array.from(
@@ -80,7 +80,7 @@ function App() {
 
 	useEffect(() => {
 		fetchSearchedData();
-	}, [searchQuery]);
+	}, [searchQuery, fetchSearchedData]);
 
 	const showHoverInfo = (brew, e) => {
 		if (activeData) return;
