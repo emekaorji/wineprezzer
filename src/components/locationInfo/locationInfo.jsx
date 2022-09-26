@@ -2,7 +2,9 @@ import React from 'react';
 import { Location, Phone } from '../ui/icons';
 import styles from './locationInfo.module.css';
 
-function LocationInfo({ hoveredData: info, activeData, position }) {
+function LocationInfo({ hoveredData, activeData, position }) {
+	const info = activeData || hoveredData;
+
 	return (
 		<>
 			<div
